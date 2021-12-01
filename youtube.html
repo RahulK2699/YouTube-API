@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="youtube_style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+<body>
+    <div id="menu-button" class="f-left">
+        <div class="navbar-div"></div>
+        <div class="navbar-div"></div>
+        <div class="navbar-div"></div>
+    </div>
+    <div class="f-left" id="img-div">
+        <img src="https://www.youtube.com/img/desktop/supported_browsers/yt_logo_rgb_light.png" alt="YouTube"/>
+    </div>
+    <p class="f-left">IN</p>
+
+    <input type="text" id="video"placeholder="Search"/>
+    <button onclick="searchVideos()"<i class="material-icons" style="font-size: 20px;">search</i></button>
+    <button "<i class="material-icons mic" style="font-size: 24px;">mic</i></button>
+
+    <div id="yt-icon">
+        <button "<i class="material-icons mic" style="margin-right: 7px;font-size: 24px;background-color: white;">video_call</i></button>
+        <button "<i class="material-icons mic" style="margin-right: 7px; font-size: 24px;background-color: white;">apps</i></button>
+        <button "<i class="material-icons mic" style="margin-right: 7px; font-size: 24px;background-color: white;">notifications</i></button>
+        <button class="mic" style="margin-left:23px;font-size: 24px;background-color: #03A9F4; color: white; font-size: 18px;">R</i></button>
+    </div>
+    <div class="f-clear"></div>
+    <div id="video-div"></div>
+</body>
+</html>
+<script>
+
+    let div = document.getElementById('video-div');
+    async function searchVideos(){
+        div.innerHTML = "";
+        div.style.backgroundColor = '#f5f5f5';
+        let video = document.getElementById('video').value;
+        let response = await fetch(
+            `https://youtube.googleapis.com/youtube/v3/search?q=${video}&type=video&key=AIzaSyDVxUw2Tjz71T5Qbr7Mj48vqIea4mxRF_A&maxResults=20`)
+
+        let data = await response.json();
+        
+        for({
+            id:{videoId},
+        } of data.items){
+            
+            let video_frame = document.createElement('iframe');
+
+            video_frame.src = `https://www.youtube.com/embed/${videoId}`;
+
+            video_frame.allow = `fullscreen`;
+            video_frame.width = `330px`;
+            video_frame.height = `200px`;
+            div.append(video_frame);
+        }
+    }
+    async function showData(){
+        div.style.backgroundColor = '#f5f5f5';
+        let video = document.getElementById('video').value;
+        let response = await fetch(
+            "https://youtube.googleapis.com/youtube/v3/videos?&regionCode=IN&chart=mostPopular&key=AIzaSyDVxUw2Tjz71T5Qbr7Mj48vqIea4mxRF_A&maxResults=20")
+
+        let data = await response.json();
+        
+        for(video of data.items){
+            
+            let video_frame = document.createElement('iframe');
+
+            video_frame.src = `https://www.youtube.com/embed/${video.id}`;
+
+            video_frame.allow = `fullscreen`;
+            video_frame.width = `330px`;
+            video_frame.height = `200px`;
+            div.append(video_frame);
+        }
+    }
+    showData();
+</script>

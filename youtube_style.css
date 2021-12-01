@@ -1,0 +1,86 @@
+.navbar-div {
+  width: 20px;
+  height: 2px;
+  margin: 4px;
+  background-color: black;
+}
+#menu-button {
+  margin-left: 1%;
+  margin-top: 8px;
+}
+img {
+  width: 90px;
+  height: 20px;
+}
+#img-div {
+  margin-left: 1%;
+  margin-top: 8px;
+}
+#img-div + p {
+  margin: 0px;
+  font-size: 10px;
+  font-weight: 300;
+  color: gray;
+  margin-left: 5px;
+}
+input {
+  width: 571px;
+  height: 28px;
+  margin-top: 5px;
+  margin-left: 388px;
+  border: 1px solid #bdbdbd;
+  float: left;
+}
+::placeholder {
+  color: #616161;
+  font-size: 15px;
+  padding-left: 10px;
+}
+button {
+  height: 32px;
+  width: 66px;
+  float: left;
+  margin-top: 5px;
+  color: #757575;
+  border: 1px solid #bdbdbd;
+  border-left: none;
+  background-color: #fafafa;
+}
+.mic {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  border: none;
+  margin-left: 8px;
+  color: #616161;
+  text-align: center;
+}
+button:hover {
+  background-color: #e0e0e0;
+  color: #424242;
+}
+#yt-icon {
+  float: left;
+  margin-left: 357px;
+}
+
+.f-left {
+  float: left;
+}
+.f-clear {
+  clear: both;
+}
+#video-div {
+  margin-left: 13%;
+  padding-left: 2%;
+  margin-top: 3%;
+  padding-top: 2%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-gap: 3%;
+}
+#div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
